@@ -112,8 +112,8 @@ const filterHandler = () => {
     if(supportMsg.length>1 && supportMsg != " "){
         const localPushMsg = 
         {
-            From : "You",
-            To  : "Support",
+            From : globalData.Email,
+            To  : "support@cary.com",
             messageContent    : supportMsg,
             timeStamp : Math.random() *1000,
         }
@@ -122,7 +122,7 @@ const filterHandler = () => {
         //this is the message which will be sent to the database for persistant storage 
         const remoteMessage ={
             From : globalData.Email,
-            To : "Support",
+            To : "support@cary.com",
             senderRole : globalData.Role,
             messageContent : supportMsg
         } 
@@ -226,8 +226,8 @@ const filterHandler = () => {
                                 {
                                    SupportMessage.length>0 &&  SupportMessage.map( message =>  (
                                   
-                                     <div className={message.From == "Support" ? "SupportMessageBubble" : "MessageBubble"}>
-                                        { message.From == "Support" && <MdOutlineSupportAgent/>}
+                                     <div className={message.From == "support@cary.com" ? "SupportMessageBubble" : "MessageBubble"}>
+                                        { message.From == "support@cary.com" && <MdOutlineSupportAgent/>}
                                         <p className="ActualMessage"> {message.messageContent}</p>
                                     </div>
                                     

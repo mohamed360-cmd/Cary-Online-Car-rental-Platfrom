@@ -7,28 +7,36 @@ import MyBookedCars from "./MyBookedCars"
 import MyListings from "./MyListings"
 import CancelPage from "./CancelPage"
 import {ImCancelCircle} from "react-icons/im"
+import { MdSupportAgent } from "react-icons/md";
+import SupportSection from "./SupportSection"
 export default function Landing({userGlobalData,setIsUserlogedIn}){
     const [createTabActive ,setCreateTabActive] = useState(true)
     const [bookedCarsTabActive,setBookedCarsTabActive] = useState(false)
     const [MyListingsTabActive ,setMyListingTabActive] = useState(false)
     const [cancelTabActive,setCancelTabActive] = useState(false)
+    const [supportTabActive,setSupportTabActive] = useState(false)
     const AddCarTabHandler = ()=>{
         setCreateTabActive(true)
         setBookedCarsTabActive(false)
         setMyListingTabActive(false)
         setCancelTabActive(false)
+        setSupportTabActive(false)
     }
     const MyListingsHandler = ()=>{
         setCreateTabActive(false)
         setBookedCarsTabActive(false)
         setMyListingTabActive(true)
         setCancelTabActive(false)
+        setSupportTabActive(false)
+
     }
     const bookedCarsHandler = ()=>{
         setCreateTabActive(false)
         setBookedCarsTabActive(true)
         setMyListingTabActive(false)
         setCancelTabActive(false)
+        setSupportTabActive(false)
+
 
     }
     const cancelCarList = ()=>{
@@ -36,6 +44,14 @@ export default function Landing({userGlobalData,setIsUserlogedIn}){
         setBookedCarsTabActive(false)
         setMyListingTabActive(false)
         setCancelTabActive(true)
+        setSupportTabActive(false)
+    }
+    const SupportSectionhandler = ()=>{
+        setCreateTabActive(false)
+        setBookedCarsTabActive(false)
+        setMyListingTabActive(false)
+        setCancelTabActive(false)
+        setSupportTabActive(true)
     }
     const logoutFunction = ()=>{
         setIsUserlogedIn(false)
@@ -56,6 +72,7 @@ export default function Landing({userGlobalData,setIsUserlogedIn}){
                 <button className={createTabActive ? "Active Tab" : "InActive Tab"} onClick={AddCarTabHandler}> <IoCreateOutline  color="white"/>Add Car</button>
                 <button className={MyListingsTabActive ? "Active Tab" : "InActive Tab"} onClick={MyListingsHandler}><FaCarSide color="white" />My Listing</button>
                 <button className={bookedCarsTabActive  ? "Active Tab" : "InActive Tab"} onClick={bookedCarsHandler}><FaTicket color="white"/>Cars Booked</button>
+                <button className={supportTabActive  ? "Active Tab" : "InActive Tab"} onClick={SupportSectionhandler}><MdSupportAgent color="white"/>Support Messages</button>
                 <button className={cancelTabActive  ? "Active Tab" : "InActive Tab"} onClick={cancelCarList}><ImCancelCircle color="white"/>Canceled List</button>
             </div>
                 <div className="ContentContainer">
@@ -63,6 +80,7 @@ export default function Landing({userGlobalData,setIsUserlogedIn}){
                     {bookedCarsTabActive && <MyBookedCars userGlobalData={userGlobalData}/>}
                     {MyListingsTabActive && <MyListings setCreateTabActive={setCreateTabActive} setMyListingTabActive={setMyListingTabActive} userGlobalData={userGlobalData}/>}
                     {cancelTabActive && <CancelPage userGlobalData={userGlobalData}/>}
+                    {supportTabActive && <SupportSection userGlobalData={userGlobalData}/>}
                 </div>
                 
             </div>

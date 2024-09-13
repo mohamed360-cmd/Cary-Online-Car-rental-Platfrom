@@ -6,6 +6,7 @@
     background-image: url("../../assets/bg3.png");
 background-size: cover;
 background-repeat: no-repeat;
+overflow-y: scroll;
 }
 .SorryMsg{
     background-color: rgb(36, 36, 145);

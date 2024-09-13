@@ -300,7 +300,7 @@ app.post("/CanceledList",async(req,res)=>{
         console.log(error)
     }
 })
-app.post("/delist",async(req,res)=>{
+app.post("/delist",async(req,res)=>{//this funciton is removing a vehcile from being listen for futer bookings
     const {vehicleId} = req.body;
     console.log(vehicleId)
     const delistResult = await vehicleStore.deleteOne({"_id": vehicleId})
